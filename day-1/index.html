@@ -1,0 +1,147 @@
+<html>
+<head>
+    <meta charset="UTF-8"> 
+    <script type="text/javascript" src="delaunay.js"></script>
+</head>
+<body>
+
+<input type="file" id="imageLoader"/>
+<a id="imageDownload" style="color: blue;">download as an image</a>
+<br/>
+<label for="triangleopacity">opacity</label>
+<input type="number" step=0.1 max=1.0 value=1.0 name="triangleopacity" id="triangleopacity"/>
+<label for="verticeopacity">vertices/points</label>
+<input type="checkbox" name="verticeopacity" id="verticeopacity" checked/>
+<br/>
+<canvas id="meshCanvas"  style="position: absolute; z-index: 1;"></canvas>
+<canvas id="imageCanvas" style="position: absolute; z-index: 0;"></canvas>
+
+<script>
+//change imageCanvas on upload and init meshCanvas
+function handleImage(e){
+    meshcanvas = document.getElementById('meshCanvas');
+    meshcanvas.addEventListener('click', handleClick, false);
+    meshctx = meshcanvas.getContext('2d');
+    
+    var reader = new FileReader();
+    reader.onload = function(event){
+        var img = new Image();
+        img.onload = function(){
+            imagecanvas.width = img.width;
+            imagecanvas.height = img.height;
+            imagectx.drawImage(img,0,0);
+
+            meshcanvas.width = img.width;
+            meshcanvas.height = img.height;
+        }
+        img.src = event.target.result;
+    }
+    reader.readAsDataURL(e.target.files[0]);     
+}
+
+
+//triangulation of the image
+
+function drawCircle(x, y, style, context){
+    context.beginPath();
+    context.arc(x, y, 2, 0, 2 * Math.PI, true);
+    context.fillStyle = style;
+    context.fill();
+}
+
+function drawTriangle(points, style, context){
+    context.beginPath();
+    context.moveTo(points[0][0], points[0][1]);
+    context.lineTo(points[1][0], points[1][1]);
+    context.lineTo(points[2][0], points[2][1]);
+    context.closePath();
+    context.fillStyle = style;
+    context.fill();
+    //context.stroke();
+}
+
+function getCentroid(points){
+    var centerX = ((points[0][0] + points[1][0] + points[2][0]) / 3);
+    var centerY = ((points[0][1] + points[1][1] + points[2][1]) / 3);
+    return [centerX, centerY]
+}
+
+function updateMesh(meshctx){
+    //clear
+    meshctx.clearRect(0, 0, meshcanvas.width, meshcanvas.height);
+
+    //run delaunay's tin to get paths
+    const triangles = Delaunay.triangulate(vertices);
+
+    //get vertices for every triangle
+    let trianglespoints = []
+    for(i = triangles.length; i; ) {
+        const triangle = []
+        --i; triangle.push([vertices[triangles[i]][0], vertices[triangles[i]][1]]);
+        --i; triangle.push([vertices[triangles[i]][0], vertices[triangles[i]][1]]);
+        --i; triangle.push([vertices[triangles[i]][0], vertices[triangles[i]][1]]);
+        trianglespoints.push(triangle)
+      }
+
+    //draw triangles
+    trianglespoints.map(e => {
+        //get color of centroid point
+        const centroid = getCentroid(e)
+        const pixel = imagectx.getImageData(centroid[0], centroid[1], imagecanvas.width, imagecanvas.height).data;
+        const pixel_rgba = `rgba(${pixel[0]}, ${pixel[1]}, ${pixel[2]}, ${opacity.triangle})`
+        drawTriangle(e, pixel_rgba ,meshctx)
+    })
+
+    //draw vertices
+    vertices.map(e => drawCircle(e[0], e[1], `rgba(255, 0, 0, ${opacity.vertice})`, meshctx))
+}
+
+function handleClick(e){
+    const x = e.layerX,
+          y =  e.layerY;
+
+    vertices.push([x,y]);
+    updateMesh(meshctx);
+}
+
+//download mesh image
+function handleDownload(e){
+    imageDownload.href = meshcanvas.toDataURL();
+    imageDownload.download = 'mesh_export.png';
+}
+
+//init canvas layers and listeners
+let vertices = [];
+
+const imageLoader = document.getElementById('imageLoader');
+      imageLoader.addEventListener('change', handleImage, false);
+
+const imageDownload = document.getElementById('imageDownload');
+      imageDownload.addEventListener('click', handleDownload , false); 
+
+let meshcanvas;
+let meshctx;
+
+const imagecanvas = document.getElementById('imageCanvas');
+const imagectx = imagecanvas.getContext('2d');
+
+//listerners for settings
+let opacity = {
+    vertice : 1,
+    triangle : 1
+};
+
+const triangleopacity = document.getElementById('triangleopacity');
+      triangleopacity.addEventListener('change', (e)=> {
+        opacity.triangle = triangleopacity.value;
+        updateMesh(meshctx);
+    }, false);
+
+const verticeopacity = document.getElementById('verticeopacity');
+      verticeopacity.addEventListener('change', ()=>{
+        verticeopacity.checked ? opacity.vertice = 1 : opacity.vertice = 0;
+        updateMesh(meshctx);
+    }, false)
+</script>
+</body>
+</html>
