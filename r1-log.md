@@ -9,3 +9,4 @@ a javascript image triangulation using canvas and [delaunay](https://github.com/
 ![day-1-demo](day-1/demo.gif)
 
 ### R1D2
+a python DOB BIS web scraper using multiprocessing to get all jobs done on a building, needs some clean up tomorrow
