@@ -1,0 +1,88 @@
+<html>
+<head>
+    <meta charset="UTF-8"> 
+<style>
+.keys{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.key{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    transition: all 0.07s;
+}
+
+.playing{
+    transform: scale(1.1);
+    border-color: #9a009a;
+    box-shadow: 0 0 10px #9a009a;
+}
+
+.image{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.image img{
+    display: none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="keys">
+    <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">nyaa</span>
+    </div>
+    <div data-key="83" class="key">
+        <kbd>S</kbd>
+        <span class="sound">pasu</span>
+    </div>
+</div>
+<div class="image">
+    <img src="assets/click.PNG" alt="nyaa pasu"/>
+</div>
+
+<audio data-key="65" src="assets/sounds/nyaa.wav"></audio>
+<audio data-key="83" src="assets/sounds/pasu.wav"></audio>
+
+<script>
+window.addEventListener('keydown', playSound);
+
+function playSound(e){
+    //querySelector by attribute 
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+
+    if(!audio) return;
+
+    //play audio 
+    audio.currentTime = 0;
+    audio.play();
+
+    //change css
+    key.classList.add('playing');
+    image.style.display = "block";
+}
+
+function removeTransition(e){
+    if(e.propertyName !== 'transform') return;
+    //e.target.classList.remove('playing');
+    this.classList.remove('playing');
+    image.style.display = "none";
+}
+
+const image = document.querySelector('.image img');
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+</script>
+</body>
+</html>
