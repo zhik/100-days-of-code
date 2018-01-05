@@ -1,0 +1,115 @@
+<html>
+<head>
+    <meta charset="UTF-8"> 
+<style>
+html{
+    background: rgb(0, 27, 68);
+    text-align: center;
+}
+
+body{
+    margin: 0;
+    font-size: 2rem;
+    display:flex;
+    flex:1;
+    min-height: 100vh;
+    align-items: center;
+}
+
+.clock{
+    background: rgb(10, 79, 182);
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    margin: 50px auto;
+    position: relative;
+    padding: 2rem;
+}
+
+.clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hand {
+    width:50%;
+    right: 50%;
+    top:50%;
+    height:6px;
+    background:rgb(0, 163, 163);
+    position: absolute;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.5s;
+    transition-timing-function: cubic-bezier(0.1, 2.0, 0.5, 1)
+}
+
+.second-hand{
+    background: rgb(255, 87, 87);
+    height: 8px;
+    z-index: 1;
+}
+
+.hour-hand{
+    width: 20%;
+    height: 6px;
+    z-index: 3;
+}
+
+</style>
+</head>
+<body>
+<div class="clock">
+    <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+    </div>
+</div>
+
+<script>
+const clock = document.querySelector('.clock');
+const secondsHand = document.querySelector('.second-hand');
+const minutesHand = document.querySelector('.min-hand');
+const hoursHand = document.querySelector('.hour-hand');
+
+function convertToDegress(time, parts){
+    return ((time / parts) * 360) + 90; //offset
+}
+
+function rotateHand(hand, degress){
+    if(degress === 90){
+        hand.style.transition = 'none'
+    }else{
+        hand.style.transition = 'all 0.5s'
+    }
+
+    hand.style.transform = `rotate(${degress}deg)`
+}
+
+function setDate(){
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+
+    rotateHand(secondsHand, convertToDegress(seconds,60));
+
+    rotateHand(minutesHand, convertToDegress(minutes,60));
+
+    rotateHand(hoursHand, convertToDegress(hours,12));
+
+    //darken clock after 6pm and before 6am
+    if(hours >= 16 || hours <= 6){
+        clock.style.background = 'rgb(0, 18, 46)'
+    }else{
+        clock.style.background = 'rgb(10, 79, 182)'
+    }
+}
+
+setInterval(setDate, 1000);
+
+</script>
+</body>
+</html>
