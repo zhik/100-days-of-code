@@ -17,3 +17,6 @@ completed day 1 of javascript 30 - drum kit
 
 ### R1D4
 completed day 2 of javascript 30 - css + js clock
+
+### R1D5
+day 3 of javascript 30 - css variables
