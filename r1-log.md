@@ -20,3 +20,6 @@ completed day 2 of javascript 30 - css + js clock
 
 ### R1D5
 day 3 of javascript 30 - css variables
+
+### R1D6
+day 4 of javascript 30 - array cardio day 1
