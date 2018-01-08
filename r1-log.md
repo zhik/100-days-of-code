@@ -23,3 +23,6 @@ day 3 of javascript 30 - css variables
 
 ### R1D6
 day 4 of javascript 30 - array cardio day 1
+
+### R1D7
+day 5 of javascript 30 - flex panels image gallery
