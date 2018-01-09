@@ -26,3 +26,6 @@ day 4 of javascript 30 - array cardio day 1
 
 ### R1D7
 day 5 of javascript 30 - flex panels image gallery
+
+### R1D8
+day 6 of javascript 30 - type ahead + geolocation sort
