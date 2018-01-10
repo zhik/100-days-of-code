@@ -29,3 +29,6 @@ day 5 of javascript 30 - flex panels image gallery
 
 ### R1D8
 day 6 of javascript 30 - type ahead + geolocation sort
+
+### R1D9
+day 7 and 8 of javascript 30 - array cardio day 2 and fun with html5 canvas
