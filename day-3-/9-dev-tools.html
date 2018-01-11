@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="UTF-8"> 
+</head>
+<body>
+<p onClick="makeGreen()">×BREAK×DOWN×</p>
+<script>
+const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+function makeGreen(){
+    const p = document.querySelector('p');
+    p.style.color = '#BADA55';
+    p.style.fontSize = '50px';
+}
+// Regular
+console.log('hello :)');
+// Interpolated
+console.log('Hello %s', ':)');
+// Styled
+console.log('%c Hello','font-size:50px; background: blue;');
+// warning!
+console.warn('problem :(');
+// Error :|
+console.error('problem :(');
+// Info
+console.info('info? ');
+// Testing
+console.assert(true);
+console.assert(false, 'problems');
+// clearing
+console.clear();
+// Viewing DOM Elements
+console.dir(document.querySelector('p'));
+// Grouping together
+dogs.forEach(dog => {
+    // console.group(`${dog.name}`);
+    console.groupCollapsed(`${dog.name}`)
+    console.log(`${dog.age}`)
+    console.groupEnd(`${dog.name}`);
+})
+// counting
+console.count('test');
+console.count('test');
+console.count('test');
+// timing
+console.time('fetch 123');
+setTimeout(() => console.timeEnd('fetch 123'), 100);
+//performance
+var start = performance.now();
+setTimeout(() => console.log(performance.now() - start), 100);
+
+//tables
+console.table(dogs);
+</script>
+</body>
+</html>
