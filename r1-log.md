@@ -12,7 +12,7 @@ a javascript image triangulation using canvas and [delaunay](https://github.com/
 a python DOB BIS web scraper using multiprocessing to get all jobs done on a building, needs some clean up tomorrow
 
 ### R1D3
-taking a few days off python, starting [javascript 30](https://javascript30.com/) to polish my javascript.
+taking a few days off python, starting [javascript 30](https://javascript30.com/) , [github source for javascript30](https://github.com/wesbos/JavaScript30) to polish my javascript.
 completed day 1 of javascript 30 - drum kit 
 
 ### R1D4
@@ -35,3 +35,6 @@ day 7 and 8 of javascript 30 - array cardio day 2 and fun with html5 canvas
 
 ### R1D10
 day 9 of javascript 30 - dev tools + starting Grow with Google Challenge Scholarship :)
+
+### R1D11
+day 10 of javascript 30 - hold shift and check checkboxes 	
