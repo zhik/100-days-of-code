@@ -41,3 +41,6 @@ day 10 of javascript 30 - hold shift and check checkboxes
 
 ### R1D12
 day 11 of javascript 30 - custom html5 video player
+
+### R1D13
+day 12 and 13 of javascript 30
