@@ -38,3 +38,6 @@ day 9 of javascript 30 - dev tools + starting Grow with Google Challenge Scholar
 
 ### R1D11
 day 10 of javascript 30 - hold shift and check checkboxes 	
+
+### R1D12
+day 11 of javascript 30 - custom html5 video player
