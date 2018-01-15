@@ -44,3 +44,6 @@ day 11 of javascript 30 - custom html5 video player
 
 ### R1D13
 day 12 and 13 of javascript 30
+
+### R1D14
+day 14 of javascript 30 - reference vs copy

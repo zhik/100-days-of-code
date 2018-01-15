@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+    // start with strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2);
+    age2 = 200;
+    console.log(age, age2);
+
+    // Let's say we have an array
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+    //const players2 = players;
+    //players2.pop();
+    //console.log(players, players2); // same
+
+    // one way
+    const players2 = players.slice();
+    players2.pop();
+    console.log(players, players2); // different , because it is a copy
+
+    // or create a new array and concat the old one in
+    const players3 = [].concat(players);
+    players3.pop();
+    console.log(players, players3);
+
+    // or use the new ES6 Spread
+    const players4 = [...players];
+    players4.pop();
+    console.log(players, players4);
+
+    // now when we update it, the original one isn't changed
+    const players5 = Array.from(players);
+    players5.pop();
+    console.log(players, players5);
+
+    // The same thing goes for objects, let's say we have a person object
+
+    // with Objects
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    // const person2 = person;
+    // person2.age = 99;
+    // console.log(person, person2);
+
+    const person2 = Object.assign({}, person, {number: 99})
+    console.log(person, person2);
+
+    // object spread works :) 
+    const person3 = {...person};
+    person3.age = 21943;
+    console.log(person, person3);
+
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const biggerPerson = {
+      name: 'Wes Bos',
+      age: 80,
+      contact: {
+        number : 1243,
+        email : '@@@@'
+      }
+    };
+
+    const biggerPerson2 = {...biggerPerson};
+    biggerPerson2.contact.email = null;
+    console.log(biggerPerson.contact , biggerPerson2.contact);
+
+  </script>
+
+</body>
+</html>
