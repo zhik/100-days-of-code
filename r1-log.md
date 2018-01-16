@@ -47,3 +47,6 @@ day 12 and 13 of javascript 30
 
 ### R1D14
 day 14 of javascript 30 - reference vs copy
+
+### R1D15
+day 15 of javascript 30 -
