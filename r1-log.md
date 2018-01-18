@@ -36,20 +36,5 @@ day 7 and 8 of javascript 30 - array cardio day 2 and fun with html5 canvas
 ### R1D10
 day 9 of javascript 30 - dev tools + starting Grow with Google Challenge Scholarship :)
 
-### R1D11
-day 10 of javascript 30 - hold shift and check checkboxes 	
-
-### R1D12
-day 11 of javascript 30 - custom html5 video player
-
-### R1D13
-day 12 and 13 of javascript 30
-
-### R1D14
-day 14 of javascript 30 - reference vs copy
-
-### R1D15
-day 15 of javascript 30 -
-
-### R1D16
-day 16 of javascript 30
+### R1D11 - R1D ...
+day 10 of javascript 30 to ...
