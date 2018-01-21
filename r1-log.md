@@ -38,3 +38,6 @@ day 9 of javascript 30 - dev tools + starting Grow with Google Challenge Scholar
 
 ### R1D11 - R1D ...
 day 10 of javascript 30 to ...
+
+### R1D19
+finshed [Pixel Art Maker Project](https://github.com/zhik/project-pixel-art-maker-starter) for Grow with Google Challenge Scholarship
