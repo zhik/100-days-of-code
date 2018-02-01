@@ -36,8 +36,11 @@ day 7 and 8 of javascript 30 - array cardio day 2 and fun with html5 canvas
 ### R1D10
 day 9 of javascript 30 - dev tools + starting Grow with Google Challenge Scholarship :)
 
-### R1D11 - R1D ...
-day 10 of javascript 30 to ...
+### R1D11 - R1D30
+day 10 of javascript 30 to day 30 :)
 
 ### R1D19
 finshed [Pixel Art Maker Project](https://github.com/zhik/project-pixel-art-maker-starter) for Grow with Google Challenge Scholarship
+
+### R1D31
+learning unity3d + mapbox for upcoming hackathon
